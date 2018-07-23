@@ -581,7 +581,7 @@ func NewAssembler(pool *StreamPool) *Assembler {
 	pool.users++
 	pool.mu.Unlock()
 	return &Assembler{
-		ret:              []byteContainer{},
+		ret:              make([]byteContainer, assemblerReturnValueInitialSize),
 		pc:               newPageCache(),
 		connPool:         pool,
 		AssemblerOptions: DefaultAssemblerOptions,
